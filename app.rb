@@ -9,7 +9,7 @@ settings = JSON.parse(file)
 
 class HTTPProxyClient
   def http(uri)
-    proxy_class = Net::HTTP::Proxy(ENV["FIXIE_URL_HOST"], ENV["FIXIE_URL_POST"], ENV["FIXIE_URL_USER"], ENV["FIXIE_URL_PASSWORD"])
+    proxy_class = Net::HTTP::Proxy(ENV["http://fixie:Z8l3cRuXaVdT8lk@velodrome.usefixie.com"], ENV[“80”], ENV["fixie"], ENV[“benz1053”])
     http = proxy_class.new(uri.host, uri.port)
     if uri.scheme == "https"
       http.use_ssl = true
@@ -33,18 +33,18 @@ def client
   @client ||= Line::Bot::Client.new { |config|
     # for LINE
     config.httpclient = HTTPProxyClient.new
-    config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-    config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    config.channel_secret = ENV["0fcee9d249316119f6d98b361a420b90"]
+    config.channel_token = ENV["c//eUJe6lMKtCicCrC9eCSE5pHZvRiCgavKE5bI6Jd8ujPcvCubtGWhUloHHixBOumFO6IRkKD+q9+AYcU/0tcylBJcaZpWUhotRTPJbQpLkjbzjjl8Q1UwTw60olaqh0fRR7qi3AEYzFej6zDDoyQdB04t89/1O/w1cDnyilFU="]
   }
 end
 
 def sendMessage(payload)
-  host = ENV["MQTT_HOST"]
-  port = ENV["MQTT_PORT"]
-  topic = ENV["MQTT_TOPIC"]
-  qos = ENV["MQTT_QOS"].to_i || 0
-  username = ENV["MQTT_USERNAME"]
-  password = ENV["MQTT_PASSWORD"]
+  host = ENV[“www.km1.io”]
+  port = ENV[“1883”]
+  topic = ENV["/Benz1053/room2”]
+  qos = ENV[“2”].to_i || 0
+  username = ENV[“Benz1053”]
+  password = ENV[“benz1053”]
   MQTT::Client.connect(
     :host => host,
     :port => port,
@@ -61,11 +61,11 @@ end
 
 $latest = ""
 def receiveMessage()
-  host = ENV["MQTT_HOST"]
-  port = ENV["MQTT_PORT"]
-  sub_topic = ENV["MQTT_SUB_TOPIC"] || ENV["MQTT_TOPIC"]
-  username = ENV["MQTT_USERNAME"]
-  password = ENV["MQTT_PASSWORD"]
+  host = ENV[“www.km1.io”]
+  port = ENV[“1883”]
+  sub_topic = ENV["/Benz1053/room2”] || ENV["/Benz1053/room2”]
+  username = ENV[“Benz1053”]
+  password = ENV[“benz1053”]
   MQTT::Client.connect(
     :host => host,
     :port => port,
